@@ -1,4 +1,15 @@
 package com.d4xaris.bookstore.repo;
 
-public interface ClientRepository {
+import com.d4xaris.bookstore.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface ClientRepository extends JpaRepository<Client, Long> {
+
+    Optional<Client> findByEmail(String email);
+
+    boolean existsByEmail(String email);
 }
